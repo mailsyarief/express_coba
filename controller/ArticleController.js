@@ -68,7 +68,7 @@ exports.view = function(req, res){
 
 
 
-exports.edit_from = function(req, res){
+exports.edit_form = function(req, res){
 	//cari article sesuai id article
 	Article.findById(req.params.id, function(err, articles){
 		//validator apakah yg login sesuai atau tidak (belum pakai middleware)
