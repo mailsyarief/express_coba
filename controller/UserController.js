@@ -14,12 +14,15 @@ exports.register_form = function(req, res){
 };
 
 exports.register_action = function(req, res){
+
+	//menangkap value dari form
 	const name = req.body.name;
 	const username = req.body.username;
 	const email = req.body.email;
 	const password = req.body.password;
 	const password2 = req.body.password2;
 
+	//validasi input
 	req.checkBody('name', 'Name is Required').notEmpty();
 	req.checkBody('username', 'Username is Required').notEmpty();
 	req.checkBody('email', 'Email is Required').notEmpty();
@@ -41,6 +44,7 @@ exports.register_action = function(req, res){
 			password:password
 		});
 
+		//merubah password -> hash dengan bcrypt
 		bcrypt.genSalt(10, function(err,salt){
 			bcrypt.hash(newUser.password, salt, function(err, hash){
 				if (err) {
@@ -66,6 +70,7 @@ exports.login_form = function(req, res){
 };
 
 exports.login_action = function(req, res, next){
+	//validasi login
 	passport.authenticate('local',{
 		successRedirect:'/',
 		failureRedirect:'/users/login',
@@ -74,6 +79,7 @@ exports.login_action = function(req, res, next){
 };
 
 exports.logout = function(req, res){
+	//logout
 	req.logout();
 	req.flash('success', 'You are logged out');
 	res.redirect('/users/login');
