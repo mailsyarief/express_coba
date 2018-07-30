@@ -1,0 +1,12 @@
+extends ../layout/layout
+block content
+	br
+	h1 #{header}
+	form(method='POST', action='/articles/edit/'+articles.id)
+		#form-group
+			label Title:
+			input.form-control(name='title', type='text' value=''+articles.title)
+		#form-group
+			label Body:
+			textarea.form-control(name='body')= articles.body
+		input.btn.btn-primary.mt-3(type='submit', value='submit')

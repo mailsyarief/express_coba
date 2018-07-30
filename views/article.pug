@@ -1,0 +1,14 @@
+//- extends layout
+//- block content
+//- 	br
+//- 	.card.flex-md-row.mb-4.shadow-sm.h-md-250
+//- 		.card-body.d-flex.flex-column.align-items-start
+//- 			h3= articles.title
+//- 			small.mb-0 Written by #{author}
+//- 			hr
+//- 			p.card-text.mb-auto= articles.body
+//- 	if user
+//- 		if user.id == articles.author
+//- 			a.btn.btn-info.btn-sm.m-2(href='/articles/edit/'+articles.id) Edit
+//- 			a.btn.btn-warning.btn-sm.m-2(href='/articles/remove/'+articles.id) Delete
+//- 			// a.btn.btn-danger.delete-article.btn-sm.m-2(href='',data-id=articles.id) Delete
